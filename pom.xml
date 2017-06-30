@@ -1,0 +1,376 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  ~ Copyright 2012-2015 TORCH GmbH, 2015-2016 Graylog, Inc.
+  ~
+  ~ This file is part of Graylog.
+  ~
+  ~ Graylog is free software: you can redistribute it and/or modify
+  ~ it under the terms of the GNU General Public License as published by
+  ~ the Free Software Foundation, either version 3 of the License, or
+  ~ (at your option) any later version.
+  ~
+  ~ Graylog is distributed in the hope that it will be useful,
+  ~ but WITHOUT ANY WARRANTY; without even the implied warranty of
+  ~ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  ~ GNU General Public License for more details.
+  ~
+  ~ You should have received a copy of the GNU General Public License
+  ~ along with Graylog.  If not, see <http://www.gnu.org/licenses />.
+  -->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <modules>
+        <module>graylog-project-parent</module>
+        <module>graylog-plugin-parent</module>
+        <module>graylog-plugin-archetype</module>
+    </modules>
+
+    <groupId>org.graylog</groupId>
+    <artifactId>graylog-parent</artifactId>
+    <version>2.3.0-alpha.2-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>Graylog Parent POM</name>
+    <description>Graylog Parent POM</description>
+    <url>https://www.graylog.org/</url>
+
+    <licenses>
+        <license>
+            <name>GNU General Public License (GPL) version 3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <organization>
+        <name>Graylog, Inc.</name>
+        <url>https://www.graylog.org/</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <name>${project.organization.name}</name>
+            <organization>${project.organization.name}</organization>
+            <organizationUrl>${project.organization.url}</organizationUrl>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git@github.com:Graylog2/graylog2-server.git</connection>
+        <developerConnection>scm:git:git@github.com:Graylog2/graylog2-server.git</developerConnection>
+        <url>https://github.com/Graylog2/graylog2-server</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>sonatype-nexus-staging</id>
+            <name>Nexus Release Repository</name>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.useIncrementalCompilation>false</maven.compiler.useIncrementalCompilation>
+
+        <!-- Dependencies -->
+        <airline.version>2.3.0</airline.version>
+        <amqp-client.version>4.1.0</amqp-client.version>
+        <apache-directory-version>1.0.0-RC2</apache-directory-version>
+        <auto-value.version>1.4.1</auto-value.version>
+        <auto-value-extension-util.version>0.3.0</auto-value-extension-util.version>
+        <commons-codec.version>1.10</commons-codec.version>
+        <commons-email.version>1.4</commons-email.version>
+        <commons-io.version>2.5</commons-io.version>
+        <disruptor.version>3.3.6</disruptor.version>
+        <drools.version>6.5.0.Final</drools.version>
+        <elasticsearch.version>2.4.5</elasticsearch.version>
+        <gelfclient.version>1.4.1</gelfclient.version>
+        <grok.version>0.1.6-graylog</grok.version>
+        <guava-retrying.version>2.0.0</guava-retrying.version>
+        <guava.version>21.0</guava.version>
+        <guice.version>4.1.0</guice.version>
+        <HdrHistogram.version>2.1.9</HdrHistogram.version>
+        <hibernate-validator.version>5.4.1.Final</hibernate-validator.version>
+        <hk2.version>2.5.0-b32</hk2.version> <!-- The HK2 version should match the version being used by Jersey -->
+        <jackson.version>2.8.8</jackson.version>
+        <jadconfig.version>0.13.0</jadconfig.version>
+        <java-semver.version>0.9.0</java-semver.version>
+        <javapoet.version>1.8.0</javapoet.version>
+        <javax.annotation-api.version>1.3</javax.annotation-api.version>
+        <javax.el-api.version>3.0.0</javax.el-api.version>
+        <javax.inject.version>1</javax.inject.version>
+        <javax.ws.rs-api.version>2.0.1</javax.ws.rs-api.version>
+        <jbcrypt.version>0.4</jbcrypt.version>
+        <jersey.version>2.25.1</jersey.version>
+        <jmte.version>3.2.0</jmte.version>
+        <jna.version>4.1.0</jna.version> <!-- for ES, make sure to use the version that ES uses -->
+        <joda-time.version>2.9.9</joda-time.version>
+        <json-path.version>2.2.0</json-path.version>
+        <jsr305.version>3.0.2</jsr305.version>
+        <kafka.version>0.9.0.1</kafka.version>
+        <log4j.version>2.8.2</log4j.version>
+        <metrics.version>3.2.2</metrics.version>
+        <mongodb-driver.version>3.4.2</mongodb-driver.version>
+        <mongojack.version>2.7.0</mongojack.version>
+        <natty.version>0.13</natty.version>
+        <netty.version>3.10.6.Final</netty.version>
+        <okhttp.version>3.7.0</okhttp.version>
+        <opencsv.version>2.3</opencsv.version>
+        <os-platform-finder.version>1.2.2</os-platform-finder.version>
+        <protobuf.version>3.2.0</protobuf.version>
+        <reflections.version>0.9.11</reflections.version>
+        <retrofit.version>2.2.0</retrofit.version>
+        <scala.version>2.11.8</scala.version>
+        <shiro.version>1.3.2</shiro.version>
+        <sigar.version>1.6.4</sigar.version>
+        <slf4j.version>1.7.25</slf4j.version>
+        <swagger.version>1.5.13</swagger.version>
+        <syslog4j.version>0.9.59</syslog4j.version>
+        <uuid.version>3.2</uuid.version>
+        <validation-api.version>1.1.0.Final</validation-api.version>
+        <zkclient.version>0.7</zkclient.version>
+        <zookeeper.version>3.4.9</zookeeper.version>
+
+        <!-- Test dependencies -->
+        <apacheds-server.version>2.0.0-M23</apacheds-server.version>
+        <assertj-core.version>3.6.2</assertj-core.version>
+        <assertj-joda-time.version>2.0.0</assertj-joda-time.version>
+        <awaitility.version>1.7.0</awaitility.version>
+        <equalsverifier.version>2.2.2</equalsverifier.version>
+        <fongo.version>2.0.13</fongo.version>
+        <jukito.version>1.5</jukito.version>
+        <junit.version>4.12</junit.version>
+        <mockito.version>2.7.22</mockito.version>
+        <nosqlunit.version>0.10.0</nosqlunit.version>
+        <restassured.version>2.9.0</restassured.version>
+        <system-rules.version>1.16.1</system-rules.version>
+
+        <!-- Nodejs dependencies -->
+        <nodejs.version>v6.9.2</nodejs.version>
+        <npm.version>4.0.3</npm.version>
+    </properties>
+
+    <repositories>
+        <!-- to make our snapshot releases work with Travis et al -->
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <name>Sonatype Nexus Snapshots</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>sonatype-nexus-releases</id>
+            <name>Sonatype Nexus Releases</name>
+            <url>https://oss.sonatype.org/content/repositories/releases</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-clean-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-install-plugin</artifactId>
+                    <version>2.5.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.6.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>2.10.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <version>3.0.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-source-plugin</artifactId>
+                    <version>3.0.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <version>2.8.2</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-release-plugin</artifactId>
+                    <version>2.5.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-pmd-plugin</artifactId>
+                    <version>3.7</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-gpg-plugin</artifactId>
+                    <version>1.6</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>2.19.1</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>versions-maven-plugin</artifactId>
+                    <version>2.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>3.0.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>cobertura-maven-plugin</artifactId>
+                    <version>2.7</version>
+                </plugin>
+                <plugin>
+                    <groupId>de.thetaphi</groupId>
+                    <artifactId>forbiddenapis</artifactId>
+                    <version>2.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>com.github.eirslett</groupId>
+                    <artifactId>frontend-maven-plugin</artifactId>
+                    <version>1.4</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <showWarnings>true</showWarnings>
+                    <showDeprecation>true</showDeprecation>
+                    <compilerId>javac-with-errorprone</compilerId>
+                    <forceJavacCompilerUse>true</forceJavacCompilerUse>
+                    <compilerArgs>
+                        <arg>-XepDisableWarningsInGeneratedCode</arg>
+                    </compilerArgs>
+                    <annotationProcessors>
+                        <annotationProcessor>com.google.auto.value.processor.AutoValueProcessor</annotationProcessor>
+                    </annotationProcessors>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.codehaus.plexus</groupId>
+                        <artifactId>plexus-compiler-javac-errorprone</artifactId>
+                        <version>2.8.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.google.errorprone</groupId>
+                        <artifactId>error_prone_core</artifactId>
+                        <version>2.0.19</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-release-plugin</artifactId>
+                <configuration>
+                    <autoVersionSubmodules>true</autoVersionSubmodules>
+                    <mavenExecutorId>forked-path</mavenExecutorId>
+                    <tagNameFormat>@{project.version}</tagNameFormat>
+                    <preparationGoals>clean test</preparationGoals>
+                    <releaseProfiles>release-profile,release</releaseProfiles>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <attach>true</attach>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <!-- we don't care about assembling the parent, just run the goal on the project, pretty please -->
+                    <ignoreMissingDescriptor>true</ignoreMissingDescriptor>
+                    <tarLongFileMode>posix</tarLongFileMode>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <id>release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <configuration>
+                            <keyname>B1606F22</keyname>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-release-plugin</artifactId>
+                        <configuration>
+                            <goals>deploy</goals>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+</project>

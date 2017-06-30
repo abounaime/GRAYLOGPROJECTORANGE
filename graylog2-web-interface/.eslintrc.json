@@ -1,0 +1,24 @@
+{
+  "parser": "babel-eslint",
+  "ecmaFeatures": {
+    "classes": true,
+    "jsx": true
+  },
+  "extends": [
+    "graylog"
+  ],
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.config.js"
+      }
+    }
+  },
+  "rules": {
+    "import/no-extraneous-dependencies": 0
+  },
+  "env": {
+    "browser": true
+  }
+}
+

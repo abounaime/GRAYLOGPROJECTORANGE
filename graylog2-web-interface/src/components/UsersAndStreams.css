@@ -1,0 +1,13 @@
+.createStreamsCss  {
+    position: absolute;
+    top: 60px;
+    right: 20px;
+}
+.addUserCss {
+    position: absolute;
+    top: 110px;
+    right: 20px;
+    width: 153px;
+    height: 44px;
+    font-size: 18px;
+}

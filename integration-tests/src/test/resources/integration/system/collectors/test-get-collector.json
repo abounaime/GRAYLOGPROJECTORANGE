@@ -1,0 +1,6 @@
+{
+  "node_id" : "getCollectorTestNodeId",
+  "node_details" : {
+    "operating_system" : "Integration Test OS 1.0"
+  }
+}
